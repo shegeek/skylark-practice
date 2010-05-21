@@ -7,7 +7,8 @@
 /* WARNING --names need to be differentiated, these came out of the same practice code */
 
 /* begin/end control points are at bottom, at a narrow end--
- * would be better to put it along a side, as a cusp wants to show
+ * would be better to put it along a side, as a cusp wants to show,
+ * especially if scaled down really small
  */
 #define NPOINTS2 13
 GLfloat pointsWeights2[NPOINTS2][4] = {
@@ -166,6 +167,61 @@ GLfloat pointsWeights2[NPOINTS2][4] = {
   {0.0, -0.2, 0., 1.},
   {-0.2, -0.5, 0., 1.},
   {0., -0.5, 0., 1.}};
+
+/* the same curve rotated so that it begins on
+ * point #5 in above curve--
+ * better, but still shows some artifacts
+ * around begin/end point
+ */
+
+GLfloat pointsWeights2[NPOINTS2][4] = {
+  {0.2, 0.4, 0., 1.},
+  {0., 0.5, 0., 1.},
+
+  {-0.2, 0.4, 0., 1.},
+  {0.05, 0.2, 0., 1.},
+  {0.2, -0.1, 0., 1.},
+  
+  {0.0, -0.2, 0., 1.},
+  {-0.2, -0.5, 0., 1.},
+
+
+  {0., -0.5, 0., 1.},
+  {0.2, -0.5, 0., 1.},
+  {0.4, -0.3, 0., 1.},
+  {0.5, -0.1, 0., 1.},
+
+
+  {0.5, 0.2, 0., 1.},
+  {0.2, 0.4, 0., 1.}};
+
+/* the same curve again, rotated as above and
+ * control points pulled in to 20% of original size
+ * is even uglier
+ */
+
+GLfloat pointsWeights2[NPOINTS2][4] = {
+  {0.04, 0.08, 0., 1.},
+  {0., 0.1, 0., 1.},
+
+  {-0.04, 0.08, 0., 1.},
+  {0.01, 0.04, 0., 1.},
+  {0.04, -0.02, 0., 1.},
+  
+  {0.0, -0.04, 0., 1.},
+  {-0.04, -0.1, 0., 1.},
+
+
+  {0., -0.1, 0., 1.},
+  {0.04, -0.1, 0., 1.},
+  {0.08, -0.06, 0., 1.},
+  {0.1, -0.02, 0., 1.},
+
+
+  {0.1, 0.04, 0., 1.},
+  {0.04, 0.08, 0., 1.}};
+
+
 
   /*============================= */
 /* a deeply curved one #8 */

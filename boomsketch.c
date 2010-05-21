@@ -18,9 +18,6 @@ GLUnurbsObj *pNurb2 = NULL;
 #define nCtrlPoints  18    
 GLfloat ctrlPoints[nCtrlPoints][4];
 GLfloat pointsWeights[nCtrlPoints][4]  = {    
-    {0, -.5, 0, 1},
-    {.3,-.5, 0, 1},
-    {.5,-.3, 0, 1},
 
     {.5, 0., 0, 1},
     {.5, .3, 0, 1},
@@ -40,8 +37,12 @@ GLfloat pointsWeights[nCtrlPoints][4]  = {
 
     {-.3,-.5, 0, 1},
 
-    {0, -0.5, 0, 1}};
-    
+      {0, -.5, 0, 1},
+    {.3,-.5, 0, 1},
+    {.5,-.3, 0, 1},
+
+    {.5, 0., 0, 1}};
+  
     // Knot vector
     int order = 5;
     int nKnots = 23;
@@ -51,13 +52,6 @@ GLfloat Knots[23] = {0, 0, 0, 0, 0,  1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 
 
 #define NPOINTS2 13
 GLfloat pointsWeights2[NPOINTS2][4] = {
-  {0., -0.5, 0., 1.},
-  {0.2, -0.5, 0., 1.},
-  {0.4, -0.3, 0., 1.},
-  {0.5, -0.1, 0., 1.},
-
-
-  {0.5, 0.2, 0., 1.},
   {0.2, 0.4, 0., 1.},
   {0., 0.5, 0., 1.},
 
@@ -67,7 +61,17 @@ GLfloat pointsWeights2[NPOINTS2][4] = {
   
   {0.0, -0.2, 0., 1.},
   {-0.2, -0.5, 0., 1.},
-  {0., -0.5, 0., 1.}};
+
+
+  {0., -0.5, 0., 1.},
+  {0.2, -0.5, 0., 1.},
+  {0.4, -0.3, 0., 1.},
+  {0.5, -0.1, 0., 1.},
+
+
+  {0.5, 0.2, 0., 1.},
+  {0.2, 0.4, 0., 1.}};
+
 
 int order2 = 5;
 int nKnots2 = 18;
@@ -143,7 +147,7 @@ GLfloat Knots2[18] = {0, 0, 0, 0, 0,  1, 2, 3, 4, 5, 6, 7, 8, 9, 9, 9, 9, 9};
 	// draw shegeek's nurb
 /* 	glColor3f(0., 1., 1.); */
 	glPushMatrix();
-	glScalef(1.5, 1.5, 1.);
+	glScalef(1.3, 1.3, 1.);
 	gluBeginCurve(pNurb2);
 	gluNurbsCurve(pNurb2, nKnots2, Knots2, kStride,
 		      &pointsWeights2[0][0], order2, GL_MAP1_VERTEX_4);
@@ -164,6 +168,11 @@ GLfloat Knots2[18] = {0, 0, 0, 0, 0,  1, 2, 3, 4, 5, 6, 7, 8, 9, 9, 9, 9, 9};
         for(i = 1; i < NPOINTS2; i += 2)
             glVertex3fv(pointsWeights2[i]);  
         glEnd();
+
+	glColor3f(0., 0., 0.);
+	glBegin(GL_POINTS);
+	glVertex3fv(pointsWeights2[0]);
+	glEnd();
 	glPopMatrix();
         
         // Flush drawing commands
@@ -180,6 +189,7 @@ void init(void)
 {
   glClearColor(1.0, 1.0, 1.0, 0.0);
   glShadeModel(GL_SMOOTH);
+  glLineWidth(5.0);
   glTranslatef(0., 0., -1.5);
 }
 
